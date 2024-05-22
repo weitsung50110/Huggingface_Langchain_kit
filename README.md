@@ -1,3 +1,4 @@
+The model I used is called [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5)，<br />
 diffuser.py的運行指令如下
 
     python diffuser.py --output male_teenager2.png --prompt "chinese handsome boy"
