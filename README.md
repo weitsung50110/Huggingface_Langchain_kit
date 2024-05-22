@@ -2,7 +2,7 @@
 The model I used is called [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5)，<br />
 diffuser.py的運行指令如下
 
-    python diffuser.py --output male_teenager2.png --prompt "chinese handsome boy"
+    python diffuser.py --output male_teenager2.png --prompt "Taiwanese handsome boy"
 
 * --output代表輸出位置
 * --prompt請打你想要生成的圖片形容文字
@@ -11,6 +11,13 @@ diffuser.py的運行指令如下
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/male.png)
 
+下面是我使用3種不同prompt產生的結果
+
+    "a Taiwanese boy handsome boy with blonde hair"
+    "a Japanese boy handsome boy with blonde hair"
+    "a Korean boy handsome boy with blonde hair"
+
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy0.png)
 
 ## langchain_sys_SEOtitle_article_generate.py
 
