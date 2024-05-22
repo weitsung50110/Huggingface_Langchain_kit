@@ -36,3 +36,5 @@ if __name__ == "__main__":
 
     # 呼叫 main 函數並傳遞解析到的輸出文件名
     main(args.prompt, args.output)
+
+# python diffuser.py --output male_teenager2.png --prompt "chinese handsome boy"
