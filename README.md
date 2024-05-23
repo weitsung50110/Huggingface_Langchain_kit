@@ -9,8 +9,6 @@ diffuser.py的運行指令如下
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/road.png)
 
-![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/male.png)
-
 下面是我使用3種不同prompt產生的結果
 
     "a Taiwanese boy handsome boy with blonde hair"
@@ -56,6 +54,11 @@ diffuser.py的運行指令如下
     **SEO Title:** "The Transformative Power of Unconditional Love: Boosting Mental Health and Building Stronger Relationships"
 
     Keywords: unconditional love, transformative power, mental health, relationships, self-acceptance.
+
+
+## RAG_workflow
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/RAG_workflow.png)
+RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RAG](https://huggingface.co/learn/cookbook/zh-CN/advanced_rag)
 
 ## langchain_rag_doc.py
 
