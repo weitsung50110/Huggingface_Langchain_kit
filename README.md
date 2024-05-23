@@ -11,9 +11,9 @@ diffuser.py的運行指令如下
 
 下面是我使用3種不同prompt產生的結果
 
-    "a Taiwanese boy handsome boy with blonde hair"
-    "a Japanese boy handsome boy with blonde hair"
-    "a Korean boy handsome boy with blonde hair"
+    "a Taiwanese handsome boy with blonde hair"
+    "a Japanese handsome boy with blonde hair"
+    "a Korean handsome boy with blonde hair"
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy0.png)
 
@@ -61,6 +61,7 @@ diffuser.py的運行指令如下
 RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RAG](https://huggingface.co/learn/cookbook/zh-CN/advanced_rag)
 
 ## langchain_rag_doc.py
+程式碼參考自 [LangChain 怎麼玩？ Retrieval 篇，來做個聊天機器人(ChatBot)吧](https://myapollo.com.tw/blog/langchain-tutorial-retrieval/)
 
 #### chunk_size (塊大小) <br />
 定義: 每個分割塊的大小，以字符數量為單位。<br />
