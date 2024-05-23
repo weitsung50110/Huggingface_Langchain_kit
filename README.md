@@ -56,3 +56,21 @@ diffuser.py的運行指令如下
     **SEO Title:** "The Transformative Power of Unconditional Love: Boosting Mental Health and Building Stronger Relationships"
 
     Keywords: unconditional love, transformative power, mental health, relationships, self-acceptance.
+
+## langchain_rag_doc.py
+
+#### chunk_size (塊大小) <br />
+定義: 每個分割塊的大小，以字符數量為單位。<br />
+作用: 決定每個文本塊包含多少字符。
+
+##### chunk_overlap (塊重疊) <br />
+定義: 相鄰文本塊之間重疊的字符數量。<br />
+作用: 確保每個分割後的文本塊之間有一些重疊部分，以保證連貫性和上下文不丟失。
+
+**為什麼需要 chunk_overlap?**<br />
+在自然語言處理和其他文本分析任務中，連貫性和上下文信息非常重要。<br />
+通過設置塊重疊部分，我們可以確保每個分割後的文本塊仍然包含足夠的上下文信息，避免因切割造成的信息丟失或語義斷裂。
+
+    text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5) 
+    documents = text_splitter.split_documents(docs)
+
