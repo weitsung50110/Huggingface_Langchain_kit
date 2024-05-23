@@ -60,6 +60,8 @@ diffuser.py的運行指令如下
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/RAG_workflow.png)
 RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RAG](https://huggingface.co/learn/cookbook/zh-CN/advanced_rag)
 
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/rag2.png)
+
 ## langchain_rag_doc.py
 程式碼參考自 [LangChain 怎麼玩？ Retrieval 篇，來做個聊天機器人(ChatBot)吧](https://myapollo.com.tw/blog/langchain-tutorial-retrieval/)
 
