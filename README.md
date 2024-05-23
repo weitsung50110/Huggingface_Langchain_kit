@@ -19,6 +19,13 @@ diffuser.py的運行指令如下
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy0.png)
 
+
+    "a cartoon of Taiwanese boy"
+    "a cartoon of Japanese boy"
+    "a cartoon of Korean boy"
+
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy00.png)
+
 ## langchain_sys_SEOtitle_article_generate.py
 
 本檔案是使用llama2和llama3來執行，切換的程式碼如下
