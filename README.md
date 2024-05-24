@@ -26,6 +26,10 @@ diffuser.py的運行指令如下
     
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy000.png)
 
+    "a handsome japanese boy at the age around 17 in the '90s"
+
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy00000.png)
+
 ## langchain_sys_SEOtitle_article_generate.py
 
 本檔案是使用llama2和llama3來執行，切換的程式碼如下
