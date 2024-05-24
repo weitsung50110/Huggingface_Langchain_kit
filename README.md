@@ -82,3 +82,17 @@ RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RA
     text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5) 
     documents = text_splitter.split_documents(docs)
 
+#### 'context': context
+如果把context註解掉的話，程式也可以RUN，但留著` 'context': context`看起來會比較直觀。
+
+    # context = []
+    input_text = input('>>> ')
+    while input_text.lower() != 'bye':
+        response = retrieval_chain.invoke({
+            'input': input_text,
+            # 'context': context
+        })
+        print(response['answer'])
+        # context = response['context']
+        input_text = input('>>> ')
+
