@@ -13,7 +13,7 @@ diffuser.py的運行指令如下
     "a Japanese handsome boy with blonde hair"
     "a Korean handsome boy with blonde hair"
 
-![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy0.png)
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy0000.png)
 
 
     "a cartoon of Taiwanese boy"
@@ -82,6 +82,8 @@ RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RA
     text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5) 
     documents = text_splitter.split_documents(docs)
 
+## langchain_rag_pdf.py
+
 #### 'context': context
 如果把context註解掉的話，程式也可以RUN，但留著` 'context': context`看起來會比較直觀。
 
@@ -96,3 +98,62 @@ RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RA
         # context = response['context']
         input_text = input('>>> ')
 
+#### print(response) 
+print(response) 也就是把retrieval_chain.invoke給print出來，可以發現長這樣
+
+    {'input': '這篇pdf在說什麼？', 'context': [Document(page_content='全部的PDF文字都會顯示在這裡', 
+    metadata={'source': 'weibert.pdf', 'page': 0})], 'answer': 'LLM給的答案會顯示在這裡.'}
+
+由此可以看出response裡面會分別有`response['input']`、`response['context']`、`response['metadata']`、`response['answer']`
+
+metadata={'source': 'weibert.pdf', 'page': 0})] 裡面的page代表LLM在第幾頁PDF找到關聯的資料。
+
+**若我們把程式碼改成如下，把response和response['context']給print出來~**
+
+    while input_text.lower() != 'bye':
+        response = retrieval_chain.invoke({
+            'input': input_text,
+            'context': context
+        })
+        print(response['answer'])
+        context = response['context']
+        print("-------------------")
+        print(response)
+        print("-------------------")
+        print(response['context'])
+        input_text = input('>>> ')
+
+可以看到結果如下，裡面會分別有`response['input']`、`response['context']`、`response['metadata']`、`response['answer']` <br />
+    
+    root@4be643ba6a94:/app# python3 langchain_rag_doc.py
+    >>> 這篇pdf在說什麼？
+    🤔
+    
+    這篇 pdf 是介紹《哈利波特》世界中的魔法藥物，包括吐真劑（Veritaserum）、變身水（Polyjuice Potion）和福來福喜（Felix Felicix）。這些藥物的特徵和使用方法都有所介紹。
+    -------------------
+    {'input': '這篇pdf在說什麼？', 'context': [Document(page_content='吐真劑（Veritaserum）出自《火盃的考驗》，特徵為像水一樣清澈無味，
+    使用者只要加入三滴，就能強迫飲用者說出真相。它是現存最強大的吐實魔藥，在《哈利波特》的虛構世界觀中受英國魔法部嚴格控管。J·K·羅琳表示，
+    吐真劑最適合用在毫無戒心、易受傷害、缺乏自保技能的人身上，有些巫師能使用鎖心術等方式保護自己免受吐真劑影響。'), 
+    Document(page_content='變身水（Polyjuice Potion）可變成其他人的樣貌。不可拿來變身成動物，也對動物產生不了效果（包括半人半動物的生物），
+    誤用動物毛髮的話，則會變成動物的容貌。'), Document(page_content='福來福喜（Felix Felicix）出自《混血王子》，
+    是一種稀有而且難以調製的金色魔藥，能夠給予飲用者好運。魔藥的效果消失之前，飲用者的所有努力都會成功。假如飲用過量，
+    會導致頭暈、魯莽和危險的過度自信，甚至成為劇毒。')], 'answer': '🤔\n\n這篇 pdf 是介紹《哈利波特》世界中的魔法藥物，
+    包括吐真劑（Veritaserum）、變身水（Polyjuice Potion）和福來福喜（Felix Felicix）。這些藥物的特徵和使用方法都有所介紹。'}
+    -------------------
+    [Document(page_content='吐真劑（Veritaserum）出自《火盃的考驗》，特徵為像水一樣清澈無味，使用者只要加入三滴，
+    就能強迫飲用者說出真相。它是現存最強大的吐實魔藥，在《哈利波特》的虛構世界觀中受英國魔法部嚴格控管。J·K·羅琳表示，
+    吐真劑最適合用在毫無戒心、易受傷害、缺乏自保技能的人身上，有些巫師能使用鎖心術等方式保護自己免受吐真劑影響。'), 
+    Document(page_content='變身水（Polyjuice Potion）可變成其他人的樣貌。不可拿來變身成動物，也對動物產生不了效果（包括半人半動物的生物），
+    誤用動物毛髮的話，則會變成動物的容貌。'), Document(page_content='福來福喜（Felix Felicix）出自《混血王子》，
+    是一種稀有而且難以調製的金色魔藥，能夠給予飲用者好運。魔藥的效果消失之前，飲用者的所有努力都會成功。假如飲用過量，會導致頭暈、魯莽和危險的過度自信，甚至成為劇毒。')]
+
+但因為我這個範例是在langchain_rag_doc.py用Document建置的，所以沒有`response['metadata']` <br />
+相反的在`response['context']`有三個page_content，是我在langchain_rag_doc.py中一開始就有匯入進去的
+
+    docs = [
+        Document(page_content='變身水（Polyjuice Potion）可變成其他人的樣貌。不可拿來變身成動物，也對動物產生不了效果（包括半人半動物的生物），誤用動物毛髮的話，則會變成動物的容貌。'),
+        Document(page_content='吐真劑（Veritaserum）出自《火盃的考驗》，特徵為像水一樣清澈無味，使用者只要加入三滴，就能強迫飲用者說出真相。它是現存最強大的吐實魔藥，在《哈利波特》的虛構世界觀中受英國魔法部嚴格控管。J·K·羅琳表示，吐真劑最適合用在毫無戒心、易受傷害、缺乏自保技能的人身上，有些巫師能使用鎖心術等方式保護自己免受吐真劑影響。'),
+        Document(page_content='福來福喜（Felix Felicix）出自《混血王子》，是一種稀有而且難以調製的金色魔藥，能夠給予飲用者好運。魔藥的效果消失之前，飲用者的所有努力都會成功。假如飲用過量，會導致頭暈、魯莽和危險的過度自信，甚至成為劇毒。'),
+    ]
+
+    
