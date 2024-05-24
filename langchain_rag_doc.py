@@ -42,6 +42,10 @@ while input_text.lower() != 'bye':
     })
     print(response['answer'])
     context = response['context']
+    print("-------------------")
+    print(response)
+    print("-------------------")
+    print(response['context'])
     input_text = input('>>> ')
 
 # https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
