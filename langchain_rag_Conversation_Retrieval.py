@@ -12,7 +12,7 @@ from langchain_community.vectorstores import FAISS
 llm = Ollama(model='llama3')
 embeddings = OllamaEmbeddings()
 
-vector = FAISS.from_texts(['My name is Amo.'], embeddings)
+vector = FAISS.from_texts(['My name is Weiberson, I\'m 25\'years old. '], embeddings)
 retriever = vector.as_retriever()
 
 prompt_search_query = ChatPromptTemplate.from_messages([
