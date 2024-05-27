@@ -7,7 +7,7 @@ diffuser.py的運行指令如下
 * --output代表輸出位置
 * --prompt請打你想要生成的圖片形容文字
 
-![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/differ_train.png)
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/differ_train0.png)
 
 下面是我使用3種不同prompt產生的結果
 
@@ -22,7 +22,7 @@ diffuser.py的運行指令如下
     "a cartoon of Japanese boy"
     "a cartoon of Korean boy"
 
-![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy00.png)
+![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy01.png)
 
     "a beautiful japanese girl at the age around 17 in the '80s"
     
