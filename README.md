@@ -107,8 +107,10 @@ RAG運作圖參考自 [使用 LangChain 在 HuggingFace 文档上构建高级 RA
 #### print(response) 
 print(response) 也就是把retrieval_chain.invoke給print出來，可以發現長這樣
 
-    {'input': '這篇pdf在說什麼？', 'context': [Document(page_content='全部的PDF文字都會顯示在這裡', 
-    metadata={'source': 'weibert.pdf', 'page': 0})], 'answer': 'LLM給的答案會顯示在這裡.'}
+    {'input': '這篇pdf在說什麼？', 
+    'context': [Document(page_content='全部的PDF文字都會顯示在這裡', 
+    metadata={'source': 'weibert.pdf', 'page': 0})],
+    'answer': 'LLM給的答案會顯示在這裡.'}
 
 由此可以看出response裡面會分別有`response['input']`、`response['context']`、`response['metadata']`、`response['answer']`
 
