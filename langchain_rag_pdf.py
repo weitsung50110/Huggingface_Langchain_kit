@@ -11,36 +11,46 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 
 
+# 初始化Ollama模型
 llm = Ollama(model='llama3')
 
+# 載入並分割PDF文件
 loader = PyPDFLoader("weibert.pdf")
 docs = loader.load_and_split()
 
-text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5) #通過設置塊重疊部分，我們可以確保每個分割後的文本塊仍然包含足夠的上下文信息
+# 設定文本分割器，chunk_size是分割的大小，chunk_overlap是重疊的部分
+text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5)
 documents = text_splitter.split_documents(docs)
 
+# 初始化嵌入模型
 embeddings = OllamaEmbeddings()
 
+# 使用FAISS建立向量資料庫
 vectordb = FAISS.from_documents(docs, embeddings)
+# 將向量資料庫設為檢索器
 retriever = vectordb.as_retriever()
 
+# 設定提示模板，將系統和使用者的提示組合
 prompt = ChatPromptTemplate.from_messages([
     ('system', 'Answer the user\'s questions in Chinese, based on the context provided below:\n\n{context}'),
     ('user', 'Question: {input}'),
 ])
+
+# 創建文件鏈，將llm和提示模板結合
 document_chain = create_stuff_documents_chain(llm, prompt)
 
+# 創建檢索鏈，將檢索器和文件鏈結合
 retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
-context = []
+# context = []
 input_text = input('>>> ')
 while input_text.lower() != 'bye':
     response = retrieval_chain.invoke({
         'input': input_text,
-        'context': context
+        # 'context': context
     })
     print(response['answer'])
-    context = response['context']
+    # context = response['context']
     input_text = input('>>> ')
 
 # https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
