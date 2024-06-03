@@ -14,7 +14,9 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 chain = prompt | llm
-print(chain.invoke({"input": input('>>> ')}))
+chain.invoke({"input": input('>>> ')})
+# 注意: 使用CallbackManager時，最後不用再print出來，不然會重複輸出兩次。
+
 
 # from langchain.callbacks.manager import CallbackManager
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
