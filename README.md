@@ -1,9 +1,15 @@
+## 目錄Table of Contents
+- [Docker](#Docker)
+- [diffuser](#diffuser)
+- [langchain_sys_SEOtitle_article_generate](#langchain_sys_SEOtitle_article_generate)
+- [langchain_rag_Conversation_Retrieval_Chain](#langchain_rag_Conversation_Retrieval_Chain)
+
 ## Docker
 [weitsung50110/ollama_flask](https://hub.docker.com/r/weitsung50110/ollama_flask/tags) >> 此為我安裝好的 Docker image 環境。
 
     docker pull weitsung50110/ollama_flask:1.0
 
-## diffuser.py
+## diffuser
 The model I used is called [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5)，<br />
 diffuser.py的運行指令如下
 
@@ -26,7 +32,7 @@ diffuser.py的運行指令如下
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy00000.png)
 
-## langchain_sys_SEOtitle_article_generate.py
+## langchain_sys_SEOtitle_article_generate
 
 本檔案是使用llama2和llama3來執行，切換的程式碼如下
 
@@ -164,7 +170,7 @@ metadata={'source': 'weibert.pdf', 'page': 0})] 裡面的page代表LLM在第幾�
         Document(page_content='日本小可愛佐籐鱗片：這些鱗片具有強大的治愈能力，常用於製作治療藥水，特別是用於治療深層傷口。'),
     ]
 
-## langchain_rag_Conversation_Retrieval_Chain.py
+## langchain_rag_Conversation_Retrieval_Chain
 我有把chat_history給印出來，可以看到隨著對話越來越長，**_我們的HumanMessage和AIMessage也越來越多_**，<br />
 因為記錄下了每一次與LLM的問與答~
 
