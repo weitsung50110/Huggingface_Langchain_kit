@@ -1,3 +1,8 @@
+## Docker
+[weitsung50110/ollama_flask](https://hub.docker.com/r/weitsung50110/ollama_flask/tags) >> 此為我安裝好的 Docker image 環境。
+
+    docker pull weitsung50110/ollama_flask:1.0
+
 ## diffuser.py
 The model I used is called [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5)，<br />
 diffuser.py的運行指令如下
@@ -16,10 +21,6 @@ diffuser.py的運行指令如下
     "a cartoon of Korean boy"
 
 ![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy01.png)
-
-    "a beautiful japanese girl at the age around 17 in the '80s"
-    
-![](https://github.com/weitsung50110/Huggingface_Langchain_kit/blob/master/example_pics/happy_boy000.png)
 
     "a handsome japanese boy at the age around 17 in the '90s"
 
