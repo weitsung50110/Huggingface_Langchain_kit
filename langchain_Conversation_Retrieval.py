@@ -28,8 +28,8 @@ retriever_chain = create_history_aware_retriever(llm, retriever, prompt_search_q
 
 # 建立回答使用者問題的提示模板
 prompt_get_answer = ChatPromptTemplate.from_messages([
-    ('system', 'Answer the user\'s questions based on the below context:\n\n{context}'),
     MessagesPlaceholder(variable_name="chat_history"),
+    ('system', 'Answer the user\'s questions based on the below context:\n\n{context}'),
     ('user', '{input}'),
 ])
 # 建立文件處理鏈

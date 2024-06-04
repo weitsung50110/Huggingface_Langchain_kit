@@ -9,7 +9,7 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 
 from langchain_community.document_loaders import WebBaseLoader
-loader = WebBaseLoader("https://python.langchain.com/v0.1/docs/get_started/introduction/")
+loader = WebBaseLoader("https://www.youtube.com/shorts/FD73DYAfisg")
 docs = loader.load()
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
