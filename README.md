@@ -10,7 +10,7 @@ Medium教學 >>
 - [langchain_Conversation_Retrieval_Chain](#langchain_Conversation_Retrieval_Chain)
 - [diffuser](#diffuser)
 - [langchain_sys_SEOtitle_article_generate](#langchain_sys_SEOtitle_article_generate)
-- [LangChain Tools](#LangChain-Toolse)
+- [LangChain Tools](#LangChain-Tools)
 
 ## Docker
 [weitsung50110/ollama_flask](https://hub.docker.com/r/weitsung50110/ollama_flask/tags) >> 此為我安裝好的 Docker image 環境。
