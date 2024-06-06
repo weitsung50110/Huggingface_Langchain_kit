@@ -10,6 +10,7 @@ Medium教學 >>
 - [langchain_Conversation_Retrieval_Chain](#langchain_Conversation_Retrieval_Chain)
 - [diffuser](#diffuser)
 - [langchain_sys_SEOtitle_article_generate](#langchain_sys_SEOtitle_article_generate)
+- [LangChain Tools](#LangChain-Toolse)
 
 ## Docker
 [weitsung50110/ollama_flask](https://hub.docker.com/r/weitsung50110/ollama_flask/tags) >> 此為我安裝好的 Docker image 環境。
@@ -218,3 +219,10 @@ Medium教學 >>
     **SEO Title:** "Happy Marriage Secrets: 5 Essential Ingredients for a Lifelong Love"
     
     I hope this article meets your expectations!What a lovely topic!
+
+# LangChain Tools
+/Tools目錄中的DuckDuckGo、Wikipedia、Youtube和Wikidata等功能介紹
+
+可以參考Medium教學 >>
+[LangChain實作不用API的網路搜尋(web search),維基百科搜尋和Youtube影片搜尋等功能
+](https://medium.com/@weiberson/langchain%E5%AF%A6%E4%BD%9C%E4%B8%8D%E7%94%A8api%E7%9A%84%E7%B6%B2%E8%B7%AF%E6%90%9C%E5%B0%8B-web-search-%E7%B6%AD%E5%9F%BA%E7%99%BE%E7%A7%91%E6%90%9C%E5%B0%8B%E5%92%8Cyoutube%E5%BD%B1%E7%89%87%E6%90%9C%E5%B0%8B%E7%AD%89%E5%8A%9F%E8%83%BD-b47c6db5f02c)。
