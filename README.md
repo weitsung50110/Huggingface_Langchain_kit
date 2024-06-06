@@ -220,7 +220,7 @@ Medium教學 >>
     
     I hope this article meets your expectations!What a lovely topic!
 
-# LangChain Tools
+## LangChain Tools
 /Tools目錄中的DuckDuckGo、Wikipedia、Youtube和Wikidata等功能介紹
 
 可以參考Medium教學 >>
