@@ -4,7 +4,7 @@ from langchain_community.utilities import WikipediaAPIWrapper
 
 wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
 
-print(wikipedia.run("HUNTER X HUNTER"))
+print(wikipedia.run("Jolin tsai"))
 
 
 
