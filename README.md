@@ -1,5 +1,3 @@
-![image](https://github.com/weitsung50110/Huggingface_Langchain_kit/assets/90156112/9b2a9a40-50de-4778-aff6-5b95368e5135)# 使用LangChain,Huggingface和大型語言模型(LLM)實作有記憶性的聊天機器人等相關程式套件實作
-
 Medium教學 >>
 [Weiberson Chang 在medium寫的教學文
 ](https://medium.com/@weiberson)。
@@ -270,6 +268,7 @@ Medium教學 >>
     title: 黃仁勳：計算機時代已逝 下一個黃金賽道是生命科學 | 全球財經 | 全球 | 聯合新聞網, 
     link: https://udn.com/news/story/6811/7779358]
 
+![image](https://github.com/weitsung50110/Huggingface_Langchain_kit/assets/90156112/9b2a9a40-50de-4778-aff6-5b95368e5135)# 使用LangChain,Huggingface和大型語言模型(LLM)實作有記憶性的聊天機器人等相關程式套件實作
 #### Langchain 維基百科搜尋功能(Wikipedia search)
 
     root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_Wikipedia.py
