@@ -1,5 +1,3 @@
-# 使用LangChain,Huggingface和大型語言模型(LLM)實作有記憶性的聊天機器人等相關程式套件實作
-
 Medium教學 >>
 [Weiberson Chang 在medium寫的教學文
 ](https://medium.com/@weiberson)。
@@ -222,6 +220,101 @@ Medium教學 >>
 
 ## LangChain Tools
 /Tools目錄中的DuckDuckGo、Wikipedia、Youtube和Wikidata等功能介紹
+
+#### Langchain網路搜尋功能(web search)
+用LangChain與DuckDuckGo進行搜索操作。DuckDuckGo是一款網際網路搜尋引擎，我們將使用DuckDuckGoSearchRun和DuckDuckGoSearchResults兩個組件，並展示如何自定義搜索結果。
+
+這些結果通常包含相關的信息摘要，但不包括詳細的鏈接和來源。
+
+    root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_DuckDuckGo.py
+    黃仁勳身價也跟著水漲船高，躋身全球第14大富豪。 美聯社報導，輝達股價繼2023年暴漲超過2倍後，
+    今年又增加1倍多，再下一城，躋身標準普爾500 ... 黃仁勳表示，
+    他給出的答案可能和人們印象中的完全相反，人類可能記得在過去10至15年內，
+    幾乎每個在正式場合回答這個問題的人都會明確地告訴你 ... 不只3兆!黃仁勳很快會變「10兆男」 
+    財星：輝達市值將飆270%直逼10兆美元 「AI教父」、輝達(Nvidia)執行長黃仁勳魅力席捲全台，
+    創造AI浪潮的他，短 ... 黃仁勳演講亮點｜數位人類（Digital Humans） 
+    「數位人類是我們的願景。 」黃仁勳表示將來進入數位人類階段，AI能像人類般互動，
+    將徹底改變各個行業，可能性是無限的，甚至還會出現AI品牌大使、AI室內設計師、AI客服代理等，
+    數位人類將以類似人類的方式理解 ... 黃仁勳說，AI將成為製造業，掀起新的工業革命，
+    創造新的大宗商品，相較於過去，電腦不只能產出資訊，還能產出技能，也就是說，
+    人們不只能 ...
+
+使用DuckDuckGoSearchResults獲取更多信息
+
+這個組件返回更豐富的搜索結果，包括標題、鏈接和摘要。
+
+返回多個搜索結果，每個結果都包括標題、摘要和鏈接，使你能夠更方便地訪問原始信息。
+
+    root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_DuckDuckGo2.py
+    [snippet: 黃仁勳表示，當時學校並沒有輔導員可以協助，「你只能堅強起來，繼續前進。」
+    他認為在美國這個機會之地，遭遇磨難是正常的，因此他努力工作，在霸凌中仍面帶微笑生存。 
+    由於寄宿學校的室友是 17 歲的文盲，黃仁勳便教他識字，而室友則反教他臥推。, 
+    title: 黃仁勳創立輝達以前，是怎樣的人？曾挺過霸凌，還是成績全 a 的桌球好手|經理人, 
+    link: https://www.managertoday.com.tw/articles/view/68013], 
+    
+    [snippet: 黃仁勳身價也跟著水漲船高，躋身全球第14大富豪。 美聯社報導，
+    輝達股價繼2023年暴漲超過2倍後，今年又增加1倍多，再下一城，躋身標準普爾500 ..., 
+    title: 輝達股價飆進千美元俱樂部 黃仁勳躋身全球14大富豪 | 國際 | 中央社 Cna, 
+    link: https://www.cna.com.tw/news/aopl/202406040349.aspx], 
+    
+    [snippet: 黃仁勳演講亮點｜數位人類（Digital Humans） 「數位人類是我們的願景。 」
+    黃仁勳表示將來進入數位人類階段，AI能像人類般互動，將徹底改變各個行業，可能性是無限的，
+    甚至還會出現AI品牌大使、AI室內設計師、AI客服代理等，數位人類將以類似人類的方式理解 ..., 
+    title: 黃仁勳演講結尾影片告白超暖「台灣是無名的英雄，卻是世界的支柱」, 
+    link: https://www.marieclaire.com.tw/lifestyle/news/79670/nvidia-ceo-jensen-huang-keynote-at-computex-2024], 
+    
+    [snippet: 黃仁勳表示，他給出的答案可能和人們印象中的完全相反，人類可能記得在過去10至15年內，
+    幾乎每個在正式場合回答這個問題的人都會明確地告訴你 ..., 
+    title: 黃仁勳：計算機時代已逝 下一個黃金賽道是生命科學 | 全球財經 | 全球 | 聯合新聞網, 
+    link: https://udn.com/news/story/6811/7779358]
+
+![image](https://github.com/weitsung50110/Huggingface_Langchain_kit/assets/90156112/9b2a9a40-50de-4778-aff6-5b95368e5135)# 使用LangChain,Huggingface和大型語言模型(LLM)實作有記憶性的聊天機器人等相關程式套件實作
+#### Langchain 維基百科搜尋功能(Wikipedia search)
+
+    root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_Wikipedia.py
+    Page: (G)I-dle
+    Summary: (G)I-dle (Korean: (여자)아이들; RR: Yeoja Aideul; lit. Girls Idol; stylized as (G)I-DLE) is a South Korean girl group formed by Cube Entertainment in 2018. The group consists of five members: Miyeon, Minnie, Soyeon, Yuqi, and Shuhua. The group was originally a sextet, until Soojin left the group on August 14, 2021. They are praised for their musicality, versatility, and for breaking stereotypes as a "self-producing" idol group, known for writing and producing much of their material. Since their debut, they have been acknowledged as one of the most successful South Korean girl groups outside of the "big four" record labels.
+    Described as bold and sensual, they attract a predominantly female fanbase with music that spans multiple genres, ranging from moombahton to hip hop, and mostly explores themes of self-love, female empowerment and self-acceptance. Critics praise their eclectic style, symbolic and conceptual lyrics, and their confidence.
+    Debuting with "Latata" on May 2, 2018, which peaked at number 12 on the Circle Digital Chart, they saw moderate success with their subsequent releases until they rose to prominence with their critically acclaimed single "Hwaa," which peaked at number five on said Chart. This was followed by their first number-one single, "Tomboy," which gained virality and critical acclaim. Featured on their full-length album, I Never Die (2022); it topped the Circle album charts and was certified platinum by the Korea Music Content Association (KMCA). Their next single, "Nxde", also topped the Circle Chart and made (G)I-dle the only artist to have two songs achieve a perfect all-kill in 2022.
+    (G)I-dle's next extended play, I Feel (2023), produced the single "Queencard" and marked the group's third number-one single in South Korea. It became their first record to sell over one million copies in the country, and sold two million copies worldwide in 2023 according to the IFPI. During the same year, they became the first act from an independent label to appear on Mediabase Top 40 Radio airplay charts and to debut on the US Billboard Pop Airplay chart with a non-English song. The group's second studio album, 2 (2024), was also met with commercial success and sold over one million copies  in South Korea. It produced top-ten lead single "Super Lady" and yielded the number-one song "Fate", which found success despite not being released as a single.
+    
+    Page: Yeh Shuhua
+    Summary: Yeh Shuhua (Chinese: 葉舒華; born January 6, 2000), known mononymously as Shuhua (Korean: 슈화), is a Taiwanese singer based in South Korea. She is a member of the South Korean girl group (G)I-dle, which debuted under Cube Entertainment in May 2018.
+    
+    Page: Chinese people in Korea
+    Summary: A recognizable community of Chinese people in Korea has existed since the 1880s, and are often known as Hwagyo. Over 90% of early Chinese migrants came from Shandong province on the east coast of China. These ethnic Han Chinese residents in Korea often held Republic of China and Korean citizenship. The Republic of China used to govern the entirety of China, but now only governs Taiwan and a minor part of Fujian province. Due to the conflation of Republic of China citizenship with Taiwanese identity in the modern era, these ethnic Chinese people in Korea or Hwagyo are now usually referred to as "Taiwanese". However, in reality most Hwagyo hold little to no ties with Taiwan.
+    After China's "reform and opening up" and subsequent normalization of China–South Korea relations, a new wave of Chinese migration to South Korea has occurred. In 2009, more than half of the South Korea's 1.1 million foreign residents were PRC citizens; 71% of those are Joseonjok (Chaoxianzu in Korea), PRC citizens of Joseon ethnicity. There is also a small community of PRC citizens in North Korea.
+    Between 2018 and 2020, the presence of Chinese (Han Chinese) workers was felt more than ethnic Korean-Chinese workers, as evidenced by the noticeable increase in conversations in Man
+
+#### Langchain 維基數據搜尋功能(Wikidata search)
+
+    root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_Wikidata.py
+    Result Q253724:
+    Label: Ariel Lin
+    Description: Taiwanese singer-actress
+    Aliases: Lin Yichen, Ariel Lin Yi-chen
+    instance of: human
+    country of citizenship: Taiwan
+    occupation: actor, singer, television actor, film actor, voice actor
+    sex or gender: female
+    date of birth: 1982-10-29
+    place of birth: Yilan County
+    educated at: National Chengchi University
+    genre: mandopop
+    
+    Result Q4926892:
+    Label: Blissful Encounter
+    Description: album by Ariel Lin
+    instance of: album
+    publication date: 2009, 2009-07-10
+    genre: mandopop
+    performer: Ariel Lin
+
+#### LangChain查詢YouTube影片(Youtube search)
+
+    root@c8c21d9dfc73:/app/Tools# python3 langchain_tools_YouTube.py
+    ['https://www.youtube.com/watch?v=89SyGIfrEWs&pp=ygUJ5LqU5pyI5aSp',
+     'https://www.youtube.com/watch?v=amAVTzMJQic&pp=ygUJ5LqU5pyI5aSp']
 
 可以參考Medium教學 >>
 [LangChain實作不用API的網路搜尋(web search),維基百科搜尋和Youtube影片搜尋等功能
