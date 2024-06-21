@@ -24,7 +24,7 @@ text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5)
 documents = text_splitter.split_documents(docs)
 
 # 初始化嵌入模型
-embeddings = OllamaEmbeddings()
+embeddings = OllamaEmbeddings(model="llama3")
 
 # 使用FAISS建立向量資料庫
 vectordb = FAISS.from_documents(docs, embeddings)

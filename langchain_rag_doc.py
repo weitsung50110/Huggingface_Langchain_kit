@@ -8,9 +8,11 @@ from langchain_core.documents import Document
 
 from langchain.text_splitter import CharacterTextSplitter
 
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 # 初始化Ollama模型
-llm = Ollama(model='llama3')
+llm = Ollama(model='llama3', callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
 
 # 建立文件列表，每個文件包含一段文字內容
 docs = [
@@ -24,7 +26,7 @@ text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5)
 documents = text_splitter.split_documents(docs)  # 將文件分割成更小的部分
 
 # 初始化嵌入模型
-embeddings = OllamaEmbeddings()
+embeddings = OllamaEmbeddings(model="llama3")
 
 # 使用FAISS建立向量資料庫
 vectordb = FAISS.from_documents(docs, embeddings)
@@ -62,4 +64,3 @@ while input_text.lower() != 'bye':
 # https://huggingface.co/learn/cookbook/zh-CN/advanced_rag
 # https://chatgpt.com/share/e0f169d7-8620-4468-ba0a-581e7d9f5676
 # https://medium.com/@jackcheang5/%E5%BB%BA%E6%A7%8B%E7%B0%A1%E6%98%93rag%E7%B3%BB%E7%B5%B1-ca4e593f3fed
-# https://www.linkedin.com/pulse/beginners-guide-retrieval-chain-using-langchain-vijaykumar-kartha-kuinc?trk=article-ssr-frontend-pulse_little-text-block
