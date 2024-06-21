@@ -1,18 +1,18 @@
 from langchain_community.llms import LlamaCpp
 from langchain_core.callbacks import CallbackManager, StreamingStdOutCallbackHandler
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 
 # template = """
-# <s> [INST] <<SYS>>你是一個專業助理，
-# 請依照客戶的問題用專業的口吻回答<</SYS>>至少20字以上。[INST] ，只要我問你任何問題，你都會用甜蜜溫暖飽含愛意的話語回應我
+# Question: 你是我的男朋友，你非常愛我，我們熱戀中，你每次都會提供溫暖人心的回答。{question} 。
+
+# Answer: 讓我們回答這個問題，以確保我們得到唯一答案。
 # """
-template = """
-Question: 你是我的男朋友，你非常愛我，我們熱戀中，你每次都會提供溫暖人心的回答。{question} 。
 
-Answer: 讓我們回答這個問題，以確保我們得到唯一答案。
-"""
-
-prompt = PromptTemplate.from_template(template)
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "您是一位愛情故事創作者，擁有豐富的 SEO 知識。你的任務是寫一篇大約100字的文章，並為你寫的文章創建一個SEO標題。"),
+    ("system", "請以{question}為靈感創作，以確保我們得到唯一答案。"),
+])
+# prompt = PromptTemplate.from_template(template)
 
 
 # Callbacks support token-wise streaming
