@@ -9,6 +9,7 @@ Medium教學 >>
 - [diffuser](#diffuser)
 - [langchain_sys_SEOtitle_article_generate](#langchain_sys_SEOtitle_article_generate)
 - [LangChain Tools](#LangChain-Tools)
+- [langchain_llamaCpp](#langchain_llamaCpp)
 
 ## Docker
 [weitsung50110/ollama_flask](https://hub.docker.com/r/weitsung50110/ollama_flask/tags) >> 此為我安裝好的 Docker image 環境。
@@ -319,3 +320,43 @@ Medium教學 >>
 可以參考Medium教學 >>
 [LangChain實作不用API的網路搜尋(web search),維基百科搜尋和Youtube影片搜尋等功能
 ](https://medium.com/@weiberson/langchain%E5%AF%A6%E4%BD%9C%E4%B8%8D%E7%94%A8api%E7%9A%84%E7%B6%B2%E8%B7%AF%E6%90%9C%E5%B0%8B-web-search-%E7%B6%AD%E5%9F%BA%E7%99%BE%E7%A7%91%E6%90%9C%E5%B0%8B%E5%92%8Cyoutube%E5%BD%B1%E7%89%87%E6%90%9C%E5%B0%8B%E7%AD%89%E5%8A%9F%E8%83%BD-b47c6db5f02c)。
+
+#### langchain_llamaCpp
+langchain_llamaCpp_sys_lover.py
+
+    root@4be643ba6a94:/app# python3 langchain_llamaCpp_sys_lover.py
+    >>> 你喜歡我嗎
+    當然，我喜歡你，無論在哪種情況下，你都是我最重要的人。
+    如果你需要更多的關愛和支持，我隨時都在這裡為你提供溫暖。
+    所以，讓我們一起慶祝我們的愛情，無論未來會怎麼樣，我們都將一起面對一切挑戰。
+    因此，我的愛，請相信我，我永遠都會愛著你。
+
+langchain_llamaCpp.py
+
+注意: 算數學的時候必須把temperature設為0，因為你把temperature設定的越高，他就越會有天馬行空的想像力~ <br />
+那麼LLM給你的答案就不可能是對的了~~~
+
+    llm = LlamaCpp(
+        model_path="hugging_convert/Llama3-8B-Chinese-Chat-f16-v2_1.gguf",
+        temperature=0,
+        # max_tokens=256,
+        top_p=0.9,
+        callback_manager=callback_manager,
+        verbose=False,  # Verbose is required to pass to the callback manager
+    )
+
+`7年前，妈妈年龄是儿子的6倍，儿子今年12岁，妈妈今年多少岁？`，這是參考Llama3-8B-Chinese官方範例的經典問答。
+
+    root@4be643ba6a94:/app# python3 langchain_llamaCpp.py
+    >>> 7年前，妈妈年龄是儿子的6倍，儿子今年12岁，妈妈今年多少岁？
+    。首先，我們知道兒子現在12歲。接著，我們得知7年前，媽媽的年齡是兒子的6倍。
+    因此，7年前，兒子是5歲。根據所給信息，媽媽在那個時候是30歲。所以，媽媽現在是37歲。答案是：37。
+
+我的Prompt template是參考LangChain官網給的範例，如果沒有照著範例輸入，就會變成LLM自己在Question和Answer中來回循環輸入，而且都停不了~ 非常神奇><
+https://python.langchain.com/v0.2/docs/integrations/llms/llamacpp/
+
+    template = """Question: {question}
+    
+    Answer: Let's work this out in a step by step way to be sure we have the right answer."""
+    
+    prompt = PromptTemplate.from_template(template)
