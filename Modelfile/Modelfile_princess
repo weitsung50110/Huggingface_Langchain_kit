@@ -1,4 +1,4 @@
-FROM wangshenzhi/llama3-8b-chinese-chat-ollama-q8
+FROM kenneth85/llama-3-taiwan:8b-instruct
 
 # set the temperature to 1 [higher is more creative, lower is more coherent]
 PARAMETER temperature 1
