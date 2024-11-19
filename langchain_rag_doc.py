@@ -16,10 +16,12 @@ llm = Ollama(model='llama3', callback_manager=CallbackManager([StreamingStdOutCa
 
 # 建立文件列表，每個文件包含一段文字內容
 docs = [
-    Document(page_content='曼德珍珠奶茶草：這種植物具有強大的魔法屬性，常用於恢復被石化的受害者。'),
-    Document(page_content='山羊可愛蓮花石 ：是一種從山羊胃中取出的石頭，可以解百毒。在緊急情況下，它被認為是最有效的解毒劑。'),
-    Document(page_content='日本小可愛佐籐鱗片：這些鱗片具有強大的治愈能力，常用於製作治療藥水，特別是用於治療深層傷口。'),
+    Document(page_content='崴寶Weibert Weiberson的網站：了解更多關於崴寶的資訊，請訪問 https://weitsung50110.github.io'),
+    Document(page_content='崴寶Weibert Weiberson的YouTube：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
+    Document(page_content='崴寶Weibert Weiberson的Instagram(IG)：跟隨崴寶的編程和創作，請訪問 https://instagram.com/weibert_coding'),
+    Document(page_content='崴寶Weibert Weiberson的Threads：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
 ]
+
 
 # 設定文本分割器，chunk_size是分割的大小，chunk_overlap是重疊的部分
 text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5)
@@ -53,7 +55,7 @@ while input_text.lower() != 'bye':
         'context': context
     })
     print(response['answer'])
-    context = response['context']
+    # context = response['context']
     print("-------------------")
     print(response)
     print("-------------------")

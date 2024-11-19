@@ -4,7 +4,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.llms import Ollama
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 
 from langchain.text_splitter import CharacterTextSplitter
@@ -31,20 +30,15 @@ documents = text_splitter.split_documents(docs)  # 將文件分割成更小的�
 embeddings = OllamaEmbeddings(model="llama3")
 
 # 使用FAISS建立向量資料庫
-# vectordb = FAISS.from_documents(docs, embeddings)
-
-db = Chroma.from_documents(
-    documents,
-    embedding=embeddings,
-    persist_directory="./knowledge-base"
-)
+vectordb = FAISS.from_documents(docs, embeddings)
 # 將向量資料庫設為檢索器
-retriever = db.as_retriever()
+retriever = vectordb.as_retriever()
+retriever.search_kwargs = {'distance_threshold': 0.8}  # 根據需求調整閾值
 
 # 設定提示模板，將系統和使用者的提示組合
 prompt = ChatPromptTemplate.from_messages([
-    ('system', '根據以下上下文，用中文回答使用者的問題：:\n\n{context}'),
-    ('user', '問題: {input}'),
+    ('system', '回答使用者的問題時，僅根據以下提供的上下文進行回答，若無法找到相關內容，請回答：「抱歉，我無法回答這個問題。」\n\n{context}'),
+    ('user', '問題：{input}'),
 ])
 
 # 創建文件鏈，將llm和提示模板結合
