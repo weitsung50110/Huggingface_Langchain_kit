@@ -60,5 +60,3 @@ chain.invoke({"input": input('>>> ')})
 
 # Keywords: unconditional love, transformative power, mental health, relationships, self-acceptance.
 
-
-# https://myapollo.com.tw/blog/langchain-tutorial-get-started/
