@@ -60,7 +60,7 @@ while input_text.lower() != 'bye':
         'input': input_text,
         'context': context
     })
-    print(response['answer'])
+    # print(response['answer'])
     # context = response['context']
     print("-------------------")
     print(response)
