@@ -12,14 +12,14 @@ from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 # 初始化Ollama模型
-llm = Ollama(model='llama3', callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
+llm = Ollama(model='kenneth85/llama-3-taiwan:8b-instruct', callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
 
 # 建立文件列表，每個文件包含一段文字內容
 docs = [
     Document(page_content='崴寶Weibert Weiberson的網站：了解更多關於崴寶的資訊，請訪問 https://weitsung50110.github.io'),
-    Document(page_content='崴寶Weibert Weiberson的YouTube：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
+    Document(page_content='崴寶Weibert Weiberson的YouTube(YT)：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
     Document(page_content='崴寶Weibert Weiberson的Instagram(IG)：跟隨崴寶的編程和創作，請訪問 https://instagram.com/weibert_coding'),
-    Document(page_content='崴寶Weibert Weiberson的Threads：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
+    Document(page_content='崴寶Weibert Weiberson的Threads(脆)：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
 ]
 
 
@@ -31,7 +31,7 @@ documents = text_splitter.split_documents(docs)  # 將文件分割成更小的�
 embeddings = OllamaEmbeddings(model="llama3")
 
 # 使用FAISS建立向量資料庫
-vectordb = FAISS.from_documents(docs, embeddings)
+vectordb = FAISS.from_documents(documents, embeddings)
 # 將向量資料庫設為檢索器
 retriever = vectordb.as_retriever()
 
@@ -56,9 +56,13 @@ while input_text.lower() != 'bye':
     })
     # print(response['answer'])
     # context = response['context']
+    # print("-------------------")
+    # print(response)
     print("-------------------")
-    print(response)
-    print("-------------------")
-    print(response['context'])
+    # print(response['context'])
     input_text = input('>>> ')
 
+# https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
+# https://huggingface.co/learn/cookbook/zh-CN/advanced_rag
+# https://chatgpt.com/share/e0f169d7-8620-4468-ba0a-581e7d9f5676
+# https://medium.com/@jackcheang5/%E5%BB%BA%E6%A7%8B%E7%B0%A1%E6%98%93rag%E7%B3%BB%E7%B5%B1-ca4e593f3fed

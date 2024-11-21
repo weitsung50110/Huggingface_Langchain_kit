@@ -20,7 +20,7 @@ docs = [
     Document(page_content='崴寶Weibert Weiberson的網站：了解更多關於崴寶的資訊，請訪問 https://weitsung50110.github.io'),
     Document(page_content='崴寶Weibert Weiberson的YouTube：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
     Document(page_content='崴寶Weibert Weiberson的Instagram(IG)：跟隨崴寶的編程和創作，請訪問 https://instagram.com/weibert_coding'),
-    Document(page_content='崴寶Weibert Weiberson的Threads：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
+    Document(page_content='崴寶Weibert Weiberson的Threads(脆)：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
 ]
 
 # 設定文本分割器，chunk_size是分割的大小，chunk_overlap是重疊的部分
@@ -60,7 +60,7 @@ while input_text.lower() != 'bye':
         'input': input_text,
         'context': context
     })
-    # print(response['answer'])
+    print(response['answer'])
     # context = response['context']
     print("-------------------")
     print(response)
@@ -68,3 +68,7 @@ while input_text.lower() != 'bye':
     print(response['context'])
     input_text = input('>>> ')
 
+# https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
+# https://huggingface.co/learn/cookbook/zh-CN/advanced_rag
+# https://chatgpt.com/share/e0f169d7-8620-4468-ba0a-581e7d9f5676
+# https://medium.com/@jackcheang5/%E5%BB%BA%E6%A7%8B%E7%B0%A1%E6%98%93rag%E7%B3%BB%E7%B5%B1-ca4e593f3fed

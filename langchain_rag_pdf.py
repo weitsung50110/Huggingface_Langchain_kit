@@ -13,7 +13,7 @@ from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 # 初始化Ollama模型
-llm = Ollama(model='llama3', callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
+llm = Ollama(model='wangshenzhi/llama3-8b-chinese-chat-ollama-q8', callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
 
 # 載入並分割PDF文件
 loader = PyPDFLoader("pdf_test.pdf")
@@ -24,10 +24,10 @@ text_splitter = CharacterTextSplitter(chunk_size=20, chunk_overlap=5)
 documents = text_splitter.split_documents(docs)
 
 # 初始化嵌入模型
-embeddings = OllamaEmbeddings(model="llama3")
+embeddings = OllamaEmbeddings(model="wangshenzhi/llama3-8b-chinese-chat-ollama-q8")
 
 # 使用FAISS建立向量資料庫
-vectordb = FAISS.from_documents(docs, embeddings)
+vectordb = FAISS.from_documents(documents, embeddings)
 # 將向量資料庫設為檢索器
 retriever = vectordb.as_retriever()
 
@@ -52,5 +52,10 @@ while input_text.lower() != 'bye':
     })
     # print(response['answer'])
     # context = response['context']
+
     input_text = input('>>> ')
 
+# https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
+# https://huggingface.co/learn/cookbook/zh-CN/advanced_rag
+# https://chatgpt.com/share/e0f169d7-8620-4468-ba0a-581e7d9f5676
+# https://medium.com/@jackcheang5/%E5%BB%BA%E6%A7%8B%E7%B0%A1%E6%98%93rag%E7%B3%BB%E7%B5%B1-ca4e593f3fed
