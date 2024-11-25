@@ -62,7 +62,3 @@ while input_text.lower() != 'bye':
     # print(response['context'])
     input_text = input('>>> ')
 
-# https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
-# https://huggingface.co/learn/cookbook/zh-CN/advanced_rag
-# https://chatgpt.com/share/e0f169d7-8620-4468-ba0a-581e7d9f5676
-# https://medium.com/@jackcheang5/%E5%BB%BA%E6%A7%8B%E7%B0%A1%E6%98%93rag%E7%B3%BB%E7%B5%B1-ca4e593f3fed
