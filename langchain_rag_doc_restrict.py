@@ -17,9 +17,9 @@ llm = Ollama(model='kenneth85/llama-3-taiwan:8b-instruct', callback_manager=Call
 # 建立文件列表，每個文件包含一段文字內容
 docs = [
     Document(page_content='崴寶Weibert Weiberson的網站：了解更多關於崴寶的資訊，請訪問 https://weitsung50110.github.io'),
-    Document(page_content='崴寶Weibert Weiberson的YouTube：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
+    Document(page_content='崴寶Weibert Weiberson的YouTube(yt)：觀看崴寶的最新影片，請訪問 https://youtube.com/@weibert'),
     Document(page_content='崴寶Weibert Weiberson的Instagram(IG)：跟隨崴寶的編程和創作，請訪問 https://instagram.com/weibert_coding'),
-    Document(page_content='崴寶Weibert Weiberson的Threads：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
+    Document(page_content='崴寶Weibert Weiberson的Threads(脆)：探索崴寶的更多動態，請訪問 https://threads.net/@weibert_coding')
 ]
 
 # 設定文本分割器，chunk_size是分割的大小，chunk_overlap是重疊的部分
@@ -54,12 +54,12 @@ while input_text.lower() != 'bye':
         'input': input_text,
         'context': context
     })
-    print(response['answer'])
+    # print(response['answer'])
     # context = response['context']
     print("-------------------")
-    print(response)
+    # print(response)
     print("-------------------")
-    print(response['context'])
+    # print(response['context'])
     input_text = input('>>> ')
 
 # https://myapollo.com.tw/blog/langchain-tutorial-retrieval/
