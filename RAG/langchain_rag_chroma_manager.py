@@ -62,7 +62,9 @@ def delete_all():
 def query_data():
     query = input("輸入查詢內容: ")
     retriever = vectorstore.as_retriever()
-    results = retriever.get_relevant_documents(query)
+    
+    # 限制返回的最大結果數量
+    results = retriever.get_relevant_documents(query)[:2]  # 最多返回 2 筆
     if results:
         print("---檢索到的相關數據：")
         for res in results:
@@ -74,27 +76,27 @@ def query_data():
 def main():
     print("Chroma 向量數據庫管理系統")
     print("功能列表：")
-    print("1. 查看所有數據 (view_all)")
-    print("2. 新增數據 (add_data)")
-    print("3. 刪除所有數據 (delete_all)")
-    print("4. 查詢相關數據 (query_data)")
-    print("輸入 'exit' 退出系統")
+    print("1. 查看所有數據")
+    print("2. 新增數據")
+    print("3. 刪除所有數據")
+    print("4. 查詢相關數據")
+    print("5. 退出系統")
     
     while True:
-        command = input("輸入功能指令: ").strip()
-        if command == "exit":
+        command = input("輸入功能編號 (1-5): ").strip()
+        if command == "5":
             print("退出系統。")
             break
-        elif command == "view_all":
+        elif command == "1":
             view_all()
-        elif command == "add_data":
+        elif command == "2":
             add_data()
-        elif command == "delete_all":
+        elif command == "3":
             delete_all()
-        elif command == "query_data":
+        elif command == "4":
             query_data()
         else:
-            print("未知指令！請輸入正確的功能指令。")
+            print("未知指令！請輸入 1-5 的功能編號。")
 
 if __name__ == "__main__":
     main()
