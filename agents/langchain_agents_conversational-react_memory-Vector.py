@@ -71,9 +71,9 @@ agent = initialize_agent(
     tools=tools,
     llm=llm,
     agent="conversational-react-description",  # 使用對話型代理
-    verbose=False,
+    verbose=False, #控制是否顯示詳細的調試信息
     agent_prompt=custom_prompt,
-    handle_parsing_errors=True,
+    handle_parsing_errors=True, #啟用錯誤處理
     memory=memory
 )
 
